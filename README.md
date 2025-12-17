@@ -33,7 +33,10 @@ python -m black .
 https://developer.servicenow.com/dev.do
 
 ```bash
-orchestrate connections add -a service-now
-orchestrate connections configure -a service-now --env draft --type team --kind basic --url https://dev292696.service-now.com
-orchestrate connections set-credentials -a service-now --env draft -u admin -p 'Gp=$H4XQxh5l'
+orchestrate connections add -a MA42021_service-now
+orchestrate connections configure -a MA42021_service-now --env draft --type team --kind basic --url https://dev292696.service-now.com
+orchestrate connections set-credentials -a MA42021_service-now --env draft -u admin -p '....'
 ```
+
+
+https://api.eu-central-1.dl.watson-orchestrate.ibm.com/instances/20250501-1821-5146-80d6-0ef0535f5342
