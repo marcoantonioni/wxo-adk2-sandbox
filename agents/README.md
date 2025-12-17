@@ -24,6 +24,9 @@ orchestrate connections add -a MA42021_service-now
 orchestrate connections configure -a MA42021_service-now --env draft --type team --kind basic --url https://dev292696.service-now.com
 orchestrate connections set-credentials -a MA42021_service-now --env draft -u admin -p '...'
 
+orchestrate connections configure -a MA42021_service-now --env live --type team --kind basic --url https://dev292696.service-now.com
+orchestrate connections set-credentials -a MA42021_service-now --env live -u admin -p '...'
+
 orchestrate connections list
 ```
 
