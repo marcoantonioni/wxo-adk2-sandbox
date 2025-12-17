@@ -2,6 +2,22 @@
 
 ## commands memos
 
+```bash
+
+orchestrate env list
+
+orchestrate env activate local
+
+orchestrate models list
+
+orchestrate agents list
+
+orchestrate tools list
+
+orchestrate connections list
+
+```
+
 ### FastMCP
 ```bash
 pip install mcp

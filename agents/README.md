@@ -65,3 +65,39 @@ orchestrate tools remove --name MA42021_get_service_now_incident_by_number
 
 orchestrate connections remove --app-id MA42021_service-now
 ```
+
+## healthcare_agent
+
+```bash
+orchestrate tools import -k openapi -f ${_WXO_SANDBOX}/tools/openapi/get_healthcare_providers.yaml
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/healthcare_agent.yaml
+```
+
+```bash
+orchestrate agents remove --name MA42021_healthcare_agent --kind native
+orchestrate tools remove --name MA42021_getHealthCareProviders
+```
+
+## langflow_agent
+```bash
+orchestrate tools import -k langflow -f ${_WXO_SANDBOX}/tools/langflow/transcripts_action_item_extractor.json
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/langflow_agent.yaml
+```
+
+Test
+<pre>
+**[09:00:15] Sarah:** Okay everyone, let's officially kick off. The core Q3 review is actually solid. . Honestly, very good. We just have these, like, these weird loose ends.
+**[09:01:22] Alice:** Uh, yeah. On the comms part, I was just thinking about that Q3 deck. So, uh, I'm taking the lead on the client update. We're good there. Alice to send the Q3 deck by Friday. I mean, that's what I said before, but yeah, it's firm.
+**[09:02:40] Mark:** Yeah, and I know Bob, you're slammed, but what's the ETA on the new API documentation? That's kinda our bottleneck now.
+**[09:03:01] Bob:** Uh-huh. Bob will review the API docs tomorrow. Yeah, that's completely locked in. I just need a clean four hours for the final check. Oh, and John, are you on the call?
+**[09:03:55] John:** (unintelligible) Yeah, I'm here. Customer call. Yes. John: I'm speaking with the customer by 10/12. We can move that out of the blocker list.
+**[09:04:30] Sarah:** Fantastic, okay. So John's clear. Now, the public announcement, let's not let that slip. We need to get the statement ready. Draft the announcement before Oct 15 so Legal has, like, you know, a full week.
+**[09:05:15] Mark:** And one other thing, admin stuff, but critical. Site visits are coming up fast. We should also book rooms next week for the new candidates. I'll flag that in a separate chat right after this.
+**[09:06:05] Sarah:** Sounds like a plan. Thanks for the clarity on those dates. Let's sync up again. Bye.
+**[09:06:12] Marco:** Great I'll send you a note.
+</pre>
+
+```bash
+orchestrate agents remove --name MA42021_langflow_agent --kind native
+orchestrate tools remove --name MA42021_transcripts_action_item_extractor
+```
