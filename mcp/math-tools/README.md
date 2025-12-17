@@ -30,3 +30,8 @@ orchestrate agents create --name "MathAgent" \
   --tools math-mcp-tools:factorial_value \
   --instructions "For reasoning or English-language tasks, depend on the LLM’s own capabilities to provide answers directly. For factorial-related math queries, such as calculating the exact value or determining the number of digits, call the MCP tools to ensure precision and handle very large numbers that the LLM may struggle with. - Use tool math-mcp-tools:factorial_value to return the exact value of 𝑛! (factorial n) - Use tool math-mcp-tools:factorial_digits to return the number of decimal digits in 𝑛! (digits in factorial n)"
 ```
+
+## Remove agent
+```bash
+orchestrate agents remove --name MathAgent --kind native
+```

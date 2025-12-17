@@ -1,7 +1,7 @@
 # wxo-adk2-sandbox
 wxo adk v2 samples
 
-## memos
+## commands memos
 
 ### FastMCP
 ```bash
@@ -24,4 +24,16 @@ pip install pylint
 ```bash
 export PYTHONPATH=~/.vscode/extensions/ms-python.black-formatter-2025.2.0/bundled/libs
 python -m black .
+```
+
+## other
+
+### ServiceNow developer account
+
+https://developer.servicenow.com/dev.do
+
+```bash
+orchestrate connections add -a service-now
+orchestrate connections configure -a service-now --env draft --type team --kind basic --url https://dev292696.service-now.com
+orchestrate connections set-credentials -a service-now --env draft -u admin -p 'Gp=$H4XQxh5l'
 ```
