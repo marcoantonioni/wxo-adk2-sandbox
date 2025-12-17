@@ -22,7 +22,7 @@ orchestrate tools remove --name MA42021_greeting
 ```bash
 orchestrate connections add -a MA42021_service-now
 orchestrate connections configure -a MA42021_service-now --env draft --type team --kind basic --url https://dev292696.service-now.com
-orchestrate connections set-credentials -a MA42021_service-now --env draft -u admin -p 'Gp=$H4XQxh5l'
+orchestrate connections set-credentials -a MA42021_service-now --env draft -u admin -p '...'
 
 orchestrate connections list
 ```
