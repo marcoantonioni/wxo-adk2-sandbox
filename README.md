@@ -38,5 +38,3 @@ orchestrate connections configure -a MA42021_service-now --env draft --type team
 orchestrate connections set-credentials -a MA42021_service-now --env draft -u admin -p '....'
 ```
 
-
-https://api.eu-central-1.dl.watson-orchestrate.ibm.com/instances/20250501-1821-5146-80d6-0ef0535f5342
