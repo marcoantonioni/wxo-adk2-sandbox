@@ -1,3 +1,7 @@
 # wxo-adk2-sandbox
-wxo adk v2 samples
+
+IBM watsonx Orchestrate
+
+ADK version 2 samples
+
 
