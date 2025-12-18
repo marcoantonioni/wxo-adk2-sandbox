@@ -1,0 +1,10 @@
+spec_version: v1
+kind: native
+name: MA42021_agent_style_default
+style: default
+description: An agent that operates using 'default' style.
+instructions: Always run the tool "MA42021_tool_document" when the user types give me a document in the chat. 
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+collaborators: []
+tools: 
+- MA42021_tool_document

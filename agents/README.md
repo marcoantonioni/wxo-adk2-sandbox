@@ -112,3 +112,16 @@ orchestrate agents import -f ${_WXO_SANDBOX}/agents/web_chat_configuration.yaml
 orchestrate agents remove --name MA42021_web_chat_configuration --kind native
 ```
 
+## agent_style_default
+
+```bash
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_document.py
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_default.yaml
+```
+
+```bash
+orchestrate agents remove --name MA42021_agent_style_default --kind native
+orchestrate tools remove --name MA42021_tool_document
+
+```
+
