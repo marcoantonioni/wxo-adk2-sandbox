@@ -1,0 +1,23 @@
+spec_version: v1
+style: default
+name: MA42021_web_chat_configuration
+llm: watsonx/openai/gpt-oss-120b
+description:  'web chat configuration sample'
+instructions: ''
+collaborators: []
+tools: []
+hidden: false
+welcome_content:
+  welcome_message: "Web chat configuration agent !"
+  description: "Type anything..."
+starter_prompts:
+    prompts:
+        - id: "hello1"
+          title: "Hello Folks"
+          subtitle: ""
+          prompt: "Tell me about salute 'Hello Folks'"
+        - id: "hello2"
+          title: "Ciao gente"
+          subtitle: ""
+          prompt: "Dimmi del saluto 'Ciao Gente'"
+          

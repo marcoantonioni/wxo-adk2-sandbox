@@ -101,3 +101,14 @@ Test
 orchestrate agents remove --name MA42021_langflow_agent --kind native
 orchestrate tools remove --name MA42021_transcripts_action_item_extractor
 ```
+
+## web_chat_customization
+
+```bash
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/web_chat_configuration.yaml
+```
+
+```bash
+orchestrate agents remove --name MA42021_web_chat_configuration --kind native
+```
+
