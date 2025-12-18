@@ -4,9 +4,9 @@ Scenario:
 
 An MA42021_agent_style_default with the 'default' style uses a tool named MA42021_tool_document to search for informational text.
 
-An Agent2 with the 'react' style uses two tools named ToolService1 and ToolService2 to search for user information and activities.
+An MA42021_agent_style_react with the 'react' style uses two tools named ToolService1 and ToolService2 to search for user information and activities.
 
-An Agent3 with the 'planner' style uses two tools named ToolPlan1 and ToolPlan2 to plan activities.
+An MA42021_agent_style_planner with the 'planner' style uses two tools named MA42021_tool_planner_1 and MA42021_tool_planner_2 to plan activities.
 
 
 ## 🟦 MA42021_agent_style_default — Stile **default** + Tool: **MA42021_tool_document** (search for informational texts)
@@ -45,125 +45,125 @@ Tell me about co-sourcing.
 * **No time or quality filtering** → possible inclusion of obsolete or non-compliant content.
 ***
 
-## 🟨 Agent2 — Stile **react** + Tools: **ToolServizio1** (anagrafica), **ToolServizio2** (attività)
+## 🟨 MA42021_agent_style_react — Stile **react** + Tools: **MA42021_user_data**, **MA42021_user_activities**
 
-> Lo stile *react* è pensato per **ragionare passo-passo**, effettuare chiamate mirate ai tool, verificare, correggere e integrare—ottimo per flussi basati su dati utente.
+> The *react* style is designed for step-by-step thinking, making targeted tool calls, checking, debugging, and integrating—great for user-driven workflows.
 
-### ✅ Prompt che lavora bene (guidato, con step e controlli)
+### ✅ Prompt that works well (guided, with steps and checks)
 
 ```text
-Obiettivo: verificare stato e attività correnti dell’utente “Rossi Marco” (ID: U-94821).
+Objective: Check the current status and activities of user "Marco Rossi" (ID: U-94821).
 
-Passi:
-1) Usa ToolServizio1 per recuperare anagrafica e stato (attivo/sospeso), email, ruolo, team.
-2) Se lo stato è “attivo”, usa ToolServizio2 per elencare le attività assegnate negli ultimi 14 giorni, con stato (aperta/chiusa/in attesa) e priorità.
-3) Se non trovi l’utente in ToolServizio1, fermati e segnalalo.
-4) Incrocia i risultati: se trovi incongruenze (es. utente sospeso ma attività “aperta”), evidenziale.
+Steps:
+1) Use MA42021_user_data to retrieve user details and status (active/suspended), email, role, and team.
+2) If the status is "active," use MA42021_user_activities to list the activities assigned in the last 14 days, with status (open/closed/pending) and priority.
+3) If you don't find the user in MA42021_user_data, stop and report it.
+
+4) Cross-reference the results: if you find any inconsistencies (e.g., user suspended but activity "open"), highlight them.
 Output:
-- Riepilogo anagrafico (nome, ID, team, stato)
-- Tabella attività (titolo, stato, priorità, data)
-- 2 raccomandazioni operative (es. chiusura ticket, escalation) basate sui dati
+- Personal data summary (name, ID, team, status)
+- Activity table (title, status, priority, date)
+- 2 data-based actionable recommendations (e.g., ticket closure, escalation)
 ```
 
-**Perché funziona (pregi):**
+**Why it works (benefits):**
 
-*   **Passi operativi chiari** → il *react* può ragionare e decidere quando chiamare ToolServizio1 vs ToolServizio2.
-*   **Condizioni e ramificazioni** → riduce errori (es. non ricercare attività se l’utente è inesistente o sospeso).
-*   **Convalida incrociata** → spinge l’agente a controllare consistenza dei dati.
-*   **Output strutturato** → facilita la fruizione e l’azione (raccomandazioni operative).
+* **Clear actionable steps** → *react* can reason and decide when to call MA42021_user_data vs. MA42021_user_activities.
+* **Conditions and branches** → Reduces errors (e.g., not searching for activities if the user is non-existent or suspended).
+* **Cross-validation** → Encourages the agent to check data consistency.
+* **Structured output** → Facilitates use and action (actionable recommendations).
 
 ***
 
-### ❌ Prompt che lavora male (confuso, senza sequenza, ambiguo)
+### ❌ Prompt doesn't work well (confusing, out of sequence, ambiguous)
 
 ```text
-Dammi tutte le informazioni utili su Marco Rossi e le sue attività recenti.
+Give me all the useful information about Marco Rossi and his recent activities.
 ```
 
-**Perché NON funziona (difetti):**
+**Why it doesn't work (flaws):**
 
-*   **Ambiguità sull’identità** (“Marco Rossi” è un nome comune) → rischio di mismatch o risultati mescolati.
-*   **Nessuna sequenza di tool** → il *react* può fare chiamate in ordine subottimale o ridondanti.
-*   **Assenza di criteri temporali e di stato** → l’agente potrebbe recuperare attività vecchie o irrilevanti.
-*   **Nessuna gestione errori** → se l’utente non esiste, l’agente potrebbe inventare o lasciare vuoti non segnalati.
+* **Identity ambiguity** (“Marco Rossi” is a common name) → risk of mismatches or mixed results.
+* **No tool sequencing** → *react* may make suboptimal or redundant calls.
+* **Lack of timing and state criteria** → the agent may retrieve old or irrelevant activities.
+* **No error handling** → if the user doesn't exist, the agent may invent or leave gaps unreported.
 
 ***
 
-## 🟩 Agent3 — Stile **planner** + Tools: **ToolPlan1** (definizione piano), **ToolPlan2** (schedulazione/esecuzione attività)
+## 🟩 MA42021_agent_style_planner — Planner Style + Tools: MA42021_tool_planner_1 (plan definition), MA42021_tool_planner_2 (task scheduling/execution)
 
-> Lo stile *planner* eccelle nel **scomporre obiettivi**, scegliere sotto-attività, decidere ordini, dipendenze e allocazioni, poi pianificare/schedulare con tool dedicati.
+> The planner style excels at breaking down objectives, choosing subtasks, deciding on orders, dependencies, and allocations, and then planning/scheduling with dedicated tools.
 
-### ✅ Prompt che lavora bene (obiettivo, vincoli, criteri, milestone)
+### ✅ Prompt that works well (objective, constraints, criteria, milestones)
 
 ```text
-Obiettivo: pianificare il rollout di un nuovo modulo CRM per il team Sales Italia entro 6 settimane.
+Objective: Plan the rollout of a new CRM module for the Italian Sales team within 6 weeks.
 
-Vincoli e preferenze:
-- Budget massimo: 45.000 €
-- Finestra di test utente: settimane 3–4
-- Nessun downtime in orario 9:00–18:00 CET
-- Coinvolgere 2 trainer interni
+Constraints and Preferences:
+- Maximum budget: €45,000
+- User testing window: weeks 3–4
+- No downtime during the 9:00–18:00 CET hours
+- Involve 2 internal trainers
 
-Criteri di successo:
-- 90% utenti formati
-- <2 incidenti critici post-go-live nelle prime 2 settimane
+Success Criteria:
+- 90% users trained
+- <2 critical incidents post-go-live in the first 2 weeks
 
-Passi richiesti:
-1) Usa ToolPlan1 per generare un piano con fasi, dipendenze, owner, rischi e mitigazioni.
-2) Valuta il rischio per fasi critiche (migrazione dati, formazione, go-live).
-3) Usa ToolPlan2 per schedulare le attività in calendario (Sprint settimanali) e assegnare owner.
+Required steps:
+1) Use MA42021_tool_planner_1 to generate a plan with phases, dependencies, owners, risks, and mitigations.
+2) Assess the risk for critical phases (data migration, training, go-live).
+3) Use MA42021_tool_planner_2 to schedule calendared activities (weekly sprints) and assign owners.
 Output:
-- Roadmap a fasi (Gantt sintetico testuale)
-- Elenco milestone e KPI di tracking
-- Registro rischi (probabilità/impatti) con azioni di mitigazione
-- Calendario attività (date, orari)
+- Phased roadmap (short, textual Gantt chart)
+- Milestone list and tracking KPIs
+- Risk log (probability/impact) with mitigation actions
+- Activity calendar (dates, times)
 ```
 
-**Perché funziona (pregi):**
+**Why it works (benefits):**
 
-*   **Obiettivo misurabile con scadenza** → permette al planner di costruire una sequenza coerente.
-*   **Vincoli operativi e di business** → guidano ToolPlan1/2 nel creare un piano realistico.
-*   **Criteri di successo/KPI** → supportano decisioni (trade-off) e controllo di avanzamento.
-*   **Fasi e dipendenze esplicite** → il planner eccelle nel decomporre e orchestrare.
+* **Measurable objective with deadline** → allows the planner to build a coherent sequence.
+* **Operational and business constraints** → guide MA42021_tool_planner_1/2 in creating a realistic plan.
+* **Success criteria/KPIs** → support decisions (trade-offs) and progress monitoring.
+* **Explicit phases and dependencies** → the planner excels at decomposition and orchestration.
 
 ***
 
-### ❌ Prompt che lavora male (senza obiettivo né vincoli, troppo generico)
+### ❌ Prompt works poorly (without objective or constraints, too generic)
 
 ```text
-Pianifica l’adozione del CRM.
+Plan CRM adoption.
 ```
 
-**Perché NON funziona (difetti):**
+**Why it DOESN'T work (flaws):**
 
-*   **Obiettivo non definito** (quale CRM? quale team? quando?) → impossibile decomporre correttamente.
-*   **Assenza di vincoli** → il planner potrebbe generare un piano teorico poco applicabile.
-*   **Nessun criterio di successo** → non c’è modo di verificare la bontà del piano.
-*   **Mancano risorse e scheduling** → ToolPlan2 non ha parametri per una schedulazione credibile.
-
-***
-
-## Linee guida rapide per scrivere prompt efficaci (per ogni stile)
-
-### Stile **default** (ricerca/risposta singola)
-
-*   **Specificare**: fonte (MA42021_tool_document), filtri (tempo, repository), campi da estrarre.
-*   **Formattare**: struttura attesa (lista, tabella, bullet), lunghezza.
-*   **Gestire**: cosa fare se manca l’informazione (segnalare le lacune).
-
-### Stile **react** (ragionamento con tool multipli)
-
-*   **Identità e disambiguazione**: ID utente, range temporale, definizione di “attività”.
-*   **Sequenza**: “prima A, poi B se condizione C”.
-*   **Controlli**: incongruenze, errori, fallback.
-*   **Output operativo**: riepilogo + raccomandazioni.
-
-### Stile **planner** (decomposizione, dipendenze, schedulazione)
-
-*   **Obiettivo SMART**: scopo, tempo, qualità/metriche.
-*   **Vincoli**: budget, risorse, finestre, policy.
-*   **Rischi e mitigazioni**: probabilità/impatti, piani B.
-*   **Calendario**: milestone, sprint, assegnazioni.
+* **Undefined objective** (which CRM? which team? when?) → impossible to break down correctly.
+* **Lack of constraints** → the planner may generate a theoretical plan that is difficult to apply.
+* **No success criteria** → there is no way to verify the plan's validity.
+* **Lack of resources and scheduling** → MA42021_tool_planner_2 has no parameters for a credible schedule.
 
 ***
 
+## Quick Guidelines for Writing Effective Prompts (for each style)
+
+### **Default** Style (search/single response)
+
+* **Specify**: source (MA42021_tool_document), filters (time, repository), fields to extract.
+* **Format**: expected structure (list, table, bullet), length.
+* **Manage**: What to do if information is missing (report gaps).
+
+### **React** Style (multi-tool reasoning)
+
+* **Identity and disambiguation**: User ID, time range, definition of “activity”.
+* **Sequence**: “first A, then B if condition C”.
+* **Checks**: inconsistencies, errors, fallbacks.
+* **Operational output**: summary + recommendations.
+
+### **Planner** Style (decomposition, dependencies, scheduling)
+
+* **SMART objective**: scope, time, quality/metrics.
+* **Constraints**: budget, resources, windows, policies.
+* **Risks and mitigations**: probability/impacts, plan Bs.
+* **Calendar**: milestones, sprints, assignments.
+
+***
