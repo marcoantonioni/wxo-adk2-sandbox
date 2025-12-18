@@ -1,17 +1,17 @@
-# Stili interazione e prompts
+# Interaction styles and prompts
 
 Scenario:
 
-un agent Agent1 con stile 'default' che utilizza un tool di nome ToolDocumentale per la ricerca di testo informativo.
+An MA42021_agent_style_default with the 'default' style uses a tool named MA42021_tool_document to search for informational text.
 
-un agent Agent2 con stile 'react' che utilizza due tools di nome ToolServizio1 e ToolServizio2 per la ricerca anagrafica e attività di un utente.
+An Agent2 with the 'react' style uses two tools named ToolService1 and ToolService2 to search for user information and activities.
 
-un agent Agent3 con stile 'planner' che utilizza due tools di nome ToolPlan1 e ToolPlan2 per la pianificazione di attività.
+An Agent3 with the 'planner' style uses two tools named ToolPlan1 and ToolPlan2 to plan activities.
 
 
-## 🟦 Agent1 — Stile **default** + Tool: **ToolDocumentale** (ricerca testi informativi)
+## 🟦 MA42021_agent_style_default — Stile **default** + Tool: **MA42021_tool_document** (search for informational texts)
 
-### ✅ Prompt che lavora bene (chiaro, contestuale, focalizzato)
+### ✅ Prompt that works well (clear, contextual, focused)
 
 ```text
 I need to prepare a one-page summary on the "IT services co-sourcing model" for management.
@@ -23,28 +23,26 @@ Respond with: title, 5 main bullet points, 3 measurable KPIs, 1 real-world examp
 If any parts are missing, please explicitly indicate what was not found.
 ```
 
-**Perché funziona (pregi):**
+**Why it works (benefits):**
 
-*   **Obiettivo chiaro e formato atteso** → l’agente “default” eccelle nell’esecuzione **single-shot**: una richiesta, un output.
-*   **Ambito di ricerca delimitato** (repository aziendali, documenti dal 2023) → riduce rumore e allucinazioni.
-*   **Criteri di estrazione espliciti** (definizione/benefici/KPI/caso d’uso) → guida il ToolDocumentale a cercare stringhe pertinenti.
-*   **Gestione delle lacune** (“se mancano parti…”) → evita output fuorvianti e aumenta affidabilità.
+* **Clear objective and expected format** → the "default" agent excels at **single-shot** execution: one request, one output.
+* **Restricted search scope** (corporate repositories, documents from 2023) → reduces noise and hallucinations.
+* **Explicit extraction criteria** (definition/benefits/KPIs/use case) → guides the MA42021_tool_document to search for relevant strings.
+* **Gap management** (“if parts are missing…”) → avoids misleading output and increases reliability.
 
 ***
 
-### ❌ Prompt che lavora male (vago, non contestuale, senza vincoli)
-
+### ❌ Prompt that works poorly (vague, non-contextual, unconstrained)
 ```text
 Tell me about co-sourcing.
 ```
 
-**Perché NON funziona (difetti):**
+**Why it doesn't work (flaws):**
 
-*   **Vaghezza totale** → l’agente “default” non pianifica né disambigua; servirà una risposta generica non basata su contenuti documentali.
-*   **Nessuna istruzione sul tool** → non è chiaro che debba interrogare ToolDocumentale.
-*   **Nessun formato di output** → l’agente può restituire un testo dispersivo, difficile da usare.
-*   **Nessun filtro temporale o di qualità** → possibile inclusione di contenuti obsoleti o non conformi.
-
+* **Total vagueness** → the "default" agent does not plan or disambiguate; a generic response not based on document content will be needed.
+* **No tool instructions** → it is unclear whether it should query MA42021_tool_document.
+* **No output format** → the agent may return garbled, difficult-to-use text.
+* **No time or quality filtering** → possible inclusion of obsolete or non-compliant content.
 ***
 
 ## 🟨 Agent2 — Stile **react** + Tools: **ToolServizio1** (anagrafica), **ToolServizio2** (attività)
@@ -149,7 +147,7 @@ Pianifica l’adozione del CRM.
 
 ### Stile **default** (ricerca/risposta singola)
 
-*   **Specificare**: fonte (ToolDocumentale), filtri (tempo, repository), campi da estrarre.
+*   **Specificare**: fonte (MA42021_tool_document), filtri (tempo, repository), campi da estrarre.
 *   **Formattare**: struttura attesa (lista, tabella, bullet), lunghezza.
 *   **Gestire**: cosa fare se manca l’informazione (segnalare le lacune).
 
