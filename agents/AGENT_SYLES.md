@@ -14,13 +14,13 @@ un agent Agent3 con stile 'planner' che utilizza due tools di nome ToolPlan1 e T
 ### ✅ Prompt che lavora bene (chiaro, contestuale, focalizzato)
 
 ```text
-Devo preparare un riassunto di 1 pagina sul “modello di co-sourcing per servizi IT” rivolto al management.
-Usa ToolDocumentale per cercare nei repository aziendali:
-- Linee guida ufficiali
-- Whitepaper interni dal 2023 in poi
-Estrarre: definizione, benefici, rischi, KPI suggeriti, un caso d’uso interno.
-Rispondi con: titolo, 5 bullet point principali, 3 KPI misurabili, 1 esempio reale (se presente).
-Se mancano parti, segnala esplicitamente cosa non è stato trovato.
+I need to prepare a one-page summary on the "IT services co-sourcing model" for management.
+Use Document Tool to search company repositories for:
+- Official guidelines
+- Internal whitepapers from 2023 onwards
+Extract: definition, benefits, risks, suggested KPIs, an internal use case.
+Respond with: title, 5 main bullet points, 3 measurable KPIs, 1 real-world example (if applicable).
+If any parts are missing, please explicitly indicate what was not found.
 ```
 
 **Perché funziona (pregi):**
@@ -35,7 +35,7 @@ Se mancano parti, segnala esplicitamente cosa non è stato trovato.
 ### ❌ Prompt che lavora male (vago, non contestuale, senza vincoli)
 
 ```text
-Parlami del co-sourcing.
+Tell me about co-sourcing.
 ```
 
 **Perché NON funziona (difetti):**
