@@ -1,0 +1,34 @@
+spec_version: v1
+kind: native
+name: MA42021_agent_style_planner
+style: planner
+description: An agent that operates using 'planner' style.
+instructions: |
+  Use the tool "MA42021_tool_planner" to generate a plan made of activities.
+    Output plan object with attributes:
+      plan name (string)
+      total cost (decimal)
+      scheduled (boolean)
+      executed (boolean)
+      date (date)
+      total duration (integer)
+      activities (list of objects with attributes activity name (string), activity duration (integer))
+  Use the tool "MA42021_tool_scheduler" to schedule a plan.
+    Output:
+      updated plan
+  Use the tool "MA42021_tool_executor" to execute the tasks of a planned plan.
+    Output:
+      updated plan
+  Constraints:
+  - Maximum budget
+  - Roll out window
+  Success Criteria:
+  - Total cost no more greater than 10% of entire budget. 
+  - Roll out window lesser or equal than requested.
+
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+collaborators: []
+tools: 
+- MA42021_tool_planner
+- MA42021_tool_scheduler
+- MA42021_tool_executor

@@ -107,34 +107,14 @@ instructions: |
 
 ***
 
-## 🟩 MA42021_agent_style_planner — Planner Style + Tools: MA42021_tool_planner (plan definition), MA42021_tool_scheduler (task scheduling/execution)
+## 🟩 MA42021_agent_style_planner — Planner Style + Tools: MA42021_tool_planner (plan definition), MA42021_tool_scheduler (task scheduling) , MA42021_tool_executor (task )execution)
 
 > The planner style excels at breaking down objectives, choosing subtasks, deciding on orders, dependencies, and allocations, and then planning/scheduling with dedicated tools.
 
 ### ✅ Prompt that works well (objective, constraints, criteria, milestones)
 
 ```text
-Objective: Plan the rollout of a new CRM module for the Italian Sales team within 6 weeks.
-
-Constraints and Preferences:
-- Maximum budget: €45,000
-- User testing window: weeks 3–4
-- No downtime during the 9:00–18:00 CET hours
-- Involve 2 internal trainers
-
-Success Criteria:
-- 90% users trained
-- <2 critical incidents post-go-live in the first 2 weeks
-
-Required steps:
-1) Use MA42021_tool_planner to generate a plan with phases, dependencies, owners, risks, and mitigations.
-2) Assess the risk for critical phases (data migration, training, go-live).
-3) Use MA42021_tool_scheduler to schedule calendared activities (weekly sprints) and assign owners.
-Output:
-- Phased roadmap (short, textual Gantt chart)
-- Milestone list and tracking KPIs
-- Risk log (probability/impact) with mitigation actions
-- Activity calendar (dates, times)
+Plan the rollout of a new CRM module for the Italian Sales team within 6 weeks.
 ```
 
 **Why it works (benefits):**
