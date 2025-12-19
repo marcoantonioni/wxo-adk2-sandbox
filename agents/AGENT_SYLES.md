@@ -87,6 +87,24 @@ Give me all the useful information about Marco Rossi and his recent activities.
 * **Lack of timing and state criteria** → the agent may retrieve old or irrelevant activities.
 * **No error handling** → if the user doesn't exist, the agent may invent or leave gaps unreported.
 
+### Optimize using agent instructions
+
+Add following instructions to the agent
+```yaml
+instructions: |
+  Use the tool "MA42021_user_data" to get personal data of the user.
+  Use the tool "MA42021_user_activities" to get the list of activities of the user.
+  Steps:
+    1) Use MA42021_user_data to retrieve user details and status (active/suspended), email, role, and team.
+    2) If the status is "active," use MA42021_user_activities to list the activities assigned in the last 14 days, with status (open/closed/pending) and priority.
+    3) If you don't find the user in MA42021_user_data, stop and report it.
+    4) Cross-reference the results: if you find any inconsistencies (e.g., user suspended but activity "open"), highlight them.
+  Output:
+    - Personal data summary (name, ID, team, status)
+    - Activity table (title, status, priority, date)
+    - 2 data-based actionable recommendations (e.g., ticket closure, escalation)
+```
+
 ***
 
 ## 🟩 MA42021_agent_style_planner — Planner Style + Tools: MA42021_tool_planner_1 (plan definition), MA42021_tool_planner_2 (task scheduling/execution)
