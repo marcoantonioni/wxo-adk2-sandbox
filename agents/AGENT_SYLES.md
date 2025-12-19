@@ -114,7 +114,7 @@ instructions: |
 ### ✅ Prompt that works well (objective, constraints, criteria, milestones)
 
 ```text
-Plan the rollout of a new CRM module for the Italian Sales team within 6 weeks.
+Create plan Alpha Operations with budget of $50000 and a rollout window of 5 weeks.
 ```
 
 **Why it works (benefits):**

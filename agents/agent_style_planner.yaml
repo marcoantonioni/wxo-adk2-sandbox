@@ -4,7 +4,7 @@ name: MA42021_agent_style_planner
 style: planner
 description: An agent that operates using 'planner' style.
 instructions: |
-  Use the tool "MA42021_tool_planner" to generate a plan made of activities.
+  Use the tool "MA42021_tool_planner" to select a plan.
     Output plan object with attributes:
       plan name (string)
       total cost (decimal)
@@ -30,5 +30,5 @@ llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
 collaborators: []
 tools: 
 - MA42021_tool_planner
-- MA42021_tool_scheduler
-- MA42021_tool_executor
+#- MA42021_tool_scheduler
+#- MA42021_tool_executor
