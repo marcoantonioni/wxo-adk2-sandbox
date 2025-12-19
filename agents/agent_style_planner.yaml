@@ -4,7 +4,7 @@ name: MA42021_agent_style_planner
 style: planner
 description: An agent that operates using 'planner' style.
 instructions: |
-  Use the tool "MA42021_tool_planner" to select a plan.
+  Use the tool "MA42021_tool_planner" to get a plan using plan name.
     Output plan object with attributes:
       plan name (string)
       total cost (decimal)
@@ -13,12 +13,6 @@ instructions: |
       date (date)
       total duration (integer)
       activities (list of objects with attributes activity name (string), activity duration (integer))
-  Use the tool "MA42021_tool_scheduler" to schedule a plan.
-    Output:
-      updated plan
-  Use the tool "MA42021_tool_executor" to execute the tasks of a planned plan.
-    Output:
-      updated plan
   Constraints:
   - Maximum budget
   - Roll out window
@@ -32,3 +26,9 @@ tools:
 - MA42021_tool_planner
 #- MA42021_tool_scheduler
 #- MA42021_tool_executor
+#  Use the tool "MA42021_tool_scheduler" to schedule a plan.
+#    Output:
+#      updated plan
+#  Use the tool "MA42021_tool_executor" to execute the tasks of a planned plan.
+#    Output:
+#      updated plan

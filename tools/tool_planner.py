@@ -94,8 +94,8 @@ _repository = PlanRepository()
 @tool(name="MA42021_tool_planner")
 def get_plan_by_name(plan_name: str) -> Plan:
     """
-    Tool principale: riceve un nome e ritorna un oggetto Plan.
-    Solleva KeyError se il piano non esiste.
+    Receives a name and returns a Plan object.
+    Raises KeyError if the plan does not exist.
     """
     plan = _repository.get(plan_name)
     if plan is None:
@@ -104,10 +104,11 @@ def get_plan_by_name(plan_name: str) -> Plan:
     return plan
 
 
+@tool(name="MA42021_tool_planner")
 def get_plan_by_name_as_dict(plan_name: str) -> Dict:
     """
-    Variante che restituisce un dict (serializzabile in JSON).
-    Converte Decimal e date in stringhe per compatibilità massima.
+    Receives a name and returns a Plan object.
+    Raises KeyError if the plan does not exist.
     """
     plan = get_plan_by_name(plan_name)
     d = asdict(plan)
@@ -123,10 +124,10 @@ def get_plan_by_name_as_dict(plan_name: str) -> Dict:
 # Esempio d'uso (puoi rimuoverlo in produzione):
 if __name__ == "__main__":
     try:
-        p = get_plan_by_name("Alpha Operations")
+        p = get_plan_by_name("alpha")
         print("Oggetto Plan:", p)
 
-        p_dict = get_plan_by_name_as_dict("Beta Rollout")
+        p_dict = get_plan_by_name_as_dict("beta")
         print("Dict Plan:", p_dict)
     except (ValueError, KeyError) as e:
         print("Errore:", e)

@@ -147,19 +147,18 @@ orchestrate tools remove --name MA42021_user_activities
 
 ```bash
 orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_planner.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_scheduler.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_executor.py
+#orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_scheduler.py
+#orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_executor.py
 orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_planner.yaml
 ```
 
 Test
 <pre>
-Create plan Alpha Operations with budget of $50000 and a rollout window of 5 weeks.
+Get plan Alpha with budget of $50000 and a rollout window of 5 weeks.
 </pre>
 
 ```bash
-orchestrate agents remove --name agent_style_react --kind native
-orchestrate tools remove --name MA42021_user_data
-orchestrate tools remove --name MA42021_user_activities
+orchestrate agents remove --name MA42021_agent_style_planner --kind native
+orchestrate tools remove --name MA42021_tool_planner
 ```
 
