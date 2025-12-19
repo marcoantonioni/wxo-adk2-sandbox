@@ -122,6 +122,23 @@ orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_default.yaml
 ```bash
 orchestrate agents remove --name MA42021_agent_style_default --kind native
 orchestrate tools remove --name MA42021_tool_document
-
 ```
 
+## agent_style_react
+
+```bash
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/user_activities.py
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/user_data.py
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_react.yaml
+```
+
+Test
+<pre>
+Check the current status and activities of user marco.
+</pre>
+
+```bash
+orchestrate agents remove --name agent_style_react --kind native
+orchestrate tools remove --name MA42021_user_data
+orchestrate tools remove --name MA42021_user_activities
+```

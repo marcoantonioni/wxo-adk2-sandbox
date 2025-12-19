@@ -1,0 +1,22 @@
+spec_version: v1
+kind: native
+name: MA42021_agent_style_react
+style: react
+description: An agent that operates using 'react' style.
+instructions: |
+  Use the tool "MA42021_user_data" to get personal data of the user.
+  Use the tool "MA42021_user_activities" to get the list of activities of the user.
+  Steps:
+    1) Use MA42021_user_data to retrieve user details and status (active/suspended), email, role, and team.
+    2) If the status is "active," use MA42021_user_activities to list the activities assigned in the last 14 days, with status (open/closed/pending) and priority.
+    3) If you don't find the user in MA42021_user_data, stop and report it.
+    4) Cross-reference the results: if you find any inconsistencies (e.g., user suspended but activity "open"), highlight them.
+  Output:
+    - Personal data summary (name, ID, team, status)
+    - Activity table (title, status, priority, date)
+    - 2 data-based actionable recommendations (e.g., ticket closure, escalation)
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+collaborators: []
+tools: 
+- MA42021_user_data
+- MA42021_user_activities
