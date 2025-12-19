@@ -6,7 +6,7 @@ An MA42021_agent_style_default with the 'default' style uses a tool named MA4202
 
 An MA42021_agent_style_react with the 'react' style uses two tools named ToolService1 and ToolService2 to search for user information and activities.
 
-An MA42021_agent_style_planner with the 'planner' style uses two tools named MA42021_tool_planner_1 and MA42021_tool_planner_2 to plan activities.
+An MA42021_agent_style_planner with the 'planner' style uses two tools named MA42021_tool_planner and MA42021_tool_scheduler to plan activities.
 
 
 ## 🟦 MA42021_agent_style_default — Stile **default** + Tool: **MA42021_tool_document** (search for informational texts)
@@ -107,7 +107,7 @@ instructions: |
 
 ***
 
-## 🟩 MA42021_agent_style_planner — Planner Style + Tools: MA42021_tool_planner_1 (plan definition), MA42021_tool_planner_2 (task scheduling/execution)
+## 🟩 MA42021_agent_style_planner — Planner Style + Tools: MA42021_tool_planner (plan definition), MA42021_tool_scheduler (task scheduling/execution)
 
 > The planner style excels at breaking down objectives, choosing subtasks, deciding on orders, dependencies, and allocations, and then planning/scheduling with dedicated tools.
 
@@ -127,9 +127,9 @@ Success Criteria:
 - <2 critical incidents post-go-live in the first 2 weeks
 
 Required steps:
-1) Use MA42021_tool_planner_1 to generate a plan with phases, dependencies, owners, risks, and mitigations.
+1) Use MA42021_tool_planner to generate a plan with phases, dependencies, owners, risks, and mitigations.
 2) Assess the risk for critical phases (data migration, training, go-live).
-3) Use MA42021_tool_planner_2 to schedule calendared activities (weekly sprints) and assign owners.
+3) Use MA42021_tool_scheduler to schedule calendared activities (weekly sprints) and assign owners.
 Output:
 - Phased roadmap (short, textual Gantt chart)
 - Milestone list and tracking KPIs
@@ -140,7 +140,7 @@ Output:
 **Why it works (benefits):**
 
 * **Measurable objective with deadline** → allows the planner to build a coherent sequence.
-* **Operational and business constraints** → guide MA42021_tool_planner_1/2 in creating a realistic plan.
+* **Operational and business constraints** → guide MA42021_tool_planner/2 in creating a realistic plan.
 * **Success criteria/KPIs** → support decisions (trade-offs) and progress monitoring.
 * **Explicit phases and dependencies** → the planner excels at decomposition and orchestration.
 
@@ -157,7 +157,7 @@ Plan CRM adoption.
 * **Undefined objective** (which CRM? which team? when?) → impossible to break down correctly.
 * **Lack of constraints** → the planner may generate a theoretical plan that is difficult to apply.
 * **No success criteria** → there is no way to verify the plan's validity.
-* **Lack of resources and scheduling** → MA42021_tool_planner_2 has no parameters for a credible schedule.
+* **Lack of resources and scheduling** → MA42021_tool_scheduler has no parameters for a credible schedule.
 
 ***
 
