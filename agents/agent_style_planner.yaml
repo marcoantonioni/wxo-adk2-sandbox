@@ -4,8 +4,8 @@ name: MA42021_agent_style_planner
 style: planner
 description: An agent that operates using 'planner' style.
 instructions: |
-  Use the tool "MA42021_tool_planner" to get a plan using plan name.
-    Output plan object with attributes:
+  Use the tool "MA42021_tool_planner" to search a plan identified by name.
+    Output from MA42021_tool_planner is a plan object with attributes:
       plan name (string)
       total cost (decimal)
       scheduled (boolean)
@@ -14,8 +14,9 @@ instructions: |
       total duration (integer)
       activities (list of objects with attributes activity name (string), activity duration (integer))
   Constraints:
-  - Maximum budget
-  - Roll out window
+  - Use maximum budget to identify a valid plan.
+  - Use roll out window to compare with the total duration in days of the selected plan, then validate the plan against the rollout window.
+  - Show message 'Constraint mismatch, plan not valid.' if the selected plan does not respect all constraints. 
   Success Criteria:
   - Total cost no more greater than 10% of entire budget. 
   - Roll out window lesser or equal than requested.

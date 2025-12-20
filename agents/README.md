@@ -146,15 +146,22 @@ orchestrate tools remove --name MA42021_user_activities
 ## agent_style_planner
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_planner.py
 #orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_scheduler.py
 #orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_executor.py
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_planner.py
 orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_planner.yaml
 ```
 
 Test
 <pre>
-Get plan Alpha with budget of $50000 and a rollout window of 5 weeks.
+Get plan alpha with budget of 1300$ and a rollout window of 30 weeks.
+
+Get plan alpha with budget of 1300$ and a rollout window of 40 weeks.
+
+Get plan beta with budget of 3100$ and a rollout window of 53 weeks.
+
+Get plan beta with budget of 3500$ and a rollout window of 33 weeks.
+
 </pre>
 
 ```bash

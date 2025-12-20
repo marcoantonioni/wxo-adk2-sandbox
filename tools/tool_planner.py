@@ -91,7 +91,6 @@ class PlanRepository:
 # Istanza riutilizzabile del repository
 _repository = PlanRepository()
 
-@tool(name="MA42021_tool_planner")
 def get_plan_by_name(plan_name: str) -> Plan:
     """
     Receives a name and returns a Plan object.
@@ -107,7 +106,7 @@ def get_plan_by_name(plan_name: str) -> Plan:
 @tool(name="MA42021_tool_planner")
 def get_plan_by_name_as_dict(plan_name: str) -> Dict:
     """
-    Receives a name and returns a Plan object.
+    Return a Plan object identified by its name.
     Raises KeyError if the plan does not exist.
     """
     plan = get_plan_by_name(plan_name)
