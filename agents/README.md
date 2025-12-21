@@ -156,7 +156,7 @@ Test
 <pre>
 Get plan alpha with budget of 1300$ and a rollout window of 30 weeks.
 
-Get plan alpha with budget of 1300$ and a rollout window of 40 weeks.
+Get plan alpha with budget of 1150$ and a rollout window of 40 weeks.
 
 Get plan beta with budget of 3100$ and a rollout window of 53 weeks.
 

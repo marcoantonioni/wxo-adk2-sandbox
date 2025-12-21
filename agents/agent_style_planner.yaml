@@ -4,6 +4,8 @@ name: MA42021_agent_style_planner
 style: planner
 description: An agent that operates using 'planner' style.
 instructions: |
+  You must use only your tools.
+  If you do not know how to answer say: Sorry I'm not able to complete your request.
   Use the tool "MA42021_tool_planner" to search a plan identified by name.
     Output from MA42021_tool_planner is a plan object with attributes:
       plan name (string)
