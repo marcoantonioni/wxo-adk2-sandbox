@@ -2,10 +2,14 @@ from ibm_watsonx_orchestrate.agent_builder.tools import tool
 
 
 from dataclasses import dataclass, asdict
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 from typing import List, Dict, Optional
 
+@dataclass(frozen=True)
+class AgentError:
+    error_description: str
+    error_datetime: datetime
 
 @dataclass(frozen=True)
 class Activity:
@@ -97,9 +101,11 @@ def get_plan_by_name(plan_name: str) -> Plan:
     Raises KeyError if the plan does not exist.
     """
     plan = _repository.get(plan_name)
-    if plan is None:
-        raise KeyError(f"Piano '{plan_name}' non trovato. "
-                       f"Piani disponibili: {', '.join(sorted(_repository._plans.keys()))}")
+
+#    if plan is None:
+#        raise KeyError(f"Piano '{plan_name}' non trovato. "
+#                       f"Piani disponibili: {', '.join(sorted(_repository._plans.keys()))}")
+
     return plan
 
 
@@ -110,14 +116,17 @@ def get_plan_by_name_as_dict(plan_name: str) -> Dict:
     Raises KeyError if the plan does not exist.
     """
     plan = get_plan_by_name(plan_name)
-    d = asdict(plan)
+    if plan is not None:
+        d = asdict(plan)
 
-    # Normalizza i tipi non nativamente JSON-serializzabili
-    d["total_cost"] = str(plan.total_cost)  # "1250.50"
-    d["date"] = plan.date.isoformat()       # "2025-01-15"
+        # Normalizza i tipi non nativamente JSON-serializzabili
+        d["total_cost"] = str(plan.total_cost)  # "1250.50"
+        d["date"] = plan.date.isoformat()       # "2025-01-15"
+        return d
+    else:
+        d = AgentError(error_description="Boom!", error_datetime=datetime.now())
+        return asdict(d)
 
-    # activities è già convertito a list[dict] da asdict
-    return d
 
 
 # Esempio d'uso (puoi rimuoverlo in produzione):

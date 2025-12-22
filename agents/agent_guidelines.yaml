@@ -1,0 +1,25 @@
+spec_version: v1
+kind: native
+name: MA42021_agent_guidelines
+style: default
+description: You are an useful agent for weather forecasts.
+instructions: You must strictly adhere to the guidelines that are set. 
+guidelines:
+  - condition: "The Customer ask for weather forecast about italian cities."
+    action: "Use the 'MA42021_tool_wf_italy' tool to check the weather in Italy"
+    tool: MA42021_tool_wf_italy
+  - condition: "The Customer ask for weather forecast about french cities."
+    action: "Use the 'MA42021_tool_wf_france' tool to check the weather in France"
+    tool: MA42021_tool_wf_france
+  - condition: "The Customer ask for weather forecast about spanish cities."
+    action: "Use the 'MA42021_tool_wf_spain' tool to check the weather in Spain"
+    tool: MA42021_tool_wf_spain
+  - condition: "If the customer ask weather forecast for other countries not italian, not french and not spanish"
+    action: "Respond I'm not programmed for weather forecast other than Italy, France and Spain countries."
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+collaborators: []
+tools: 
+- MA42021_tool_wf_italy
+- MA42021_tool_wf_france
+- MA42021_tool_wf_spain
+

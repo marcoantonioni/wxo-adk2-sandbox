@@ -39,7 +39,7 @@ orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/create_se
 orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_my_service_now_incidents.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
 orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_service_now_incident_by_number.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
 
-orchestrate agents import -f ${_WXO_SANDBOX}/agents//service_now_agent.yaml
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/service_now_agent.yaml
 orchestrate agents import -f ${_WXO_SANDBOX}/agents/customer_care_agent.yaml
 
 orchestrate tools list
@@ -47,8 +47,8 @@ orchestrate agents list
 
 ```
 
-<pre>
 Test: 
+<pre>
 Show my benefits related to mental health
 </pre>
 
@@ -138,12 +138,14 @@ Check the current status and activities of user marco.
 </pre>
 
 ```bash
-orchestrate agents remove --name agent_style_react --kind native
+orchestrate agents remove --name MA42021_agent_style_react --kind native
 orchestrate tools remove --name MA42021_user_data
 orchestrate tools remove --name MA42021_user_activities
 ```
 
 ## agent_style_planner
+
+To Be completed...
 
 ```bash
 #orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_scheduler.py
@@ -169,3 +171,90 @@ orchestrate agents remove --name MA42021_agent_style_planner --kind native
 orchestrate tools remove --name MA42021_tool_planner
 ```
 
+## customer_care_agent_join_tool
+
+```bash
+orchestrate connections add -a MA42021_service-now
+orchestrate connections configure -a MA42021_service-now --env draft --type team --kind basic --url https://dev292696.service-now.com
+orchestrate connections set-credentials -a MA42021_service-now --env draft -u admin -p '...'
+
+orchestrate connections configure -a MA42021_service-now --env live --type team --kind basic --url https://dev292696.service-now.com
+orchestrate connections set-credentials -a MA42021_service-now --env live -u admin -p '...'
+
+orchestrate connections list
+```
+
+```bash
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_custom_join.py
+
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/get_my_claims.py
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/get_healthcare_benefits.py
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/search_healthcare_providers.py
+
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/create_service_now_incident.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_my_service_now_incidents.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_service_now_incident_by_number.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
+
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/service_now_agent.yaml
+
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/customer_care_agent_jointool.yaml
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/customer_care_agent_structuredoutput.yaml
+
+orchestrate tools list
+orchestrate agents list
+
+```
+
+Test
+<pre>
+Show my benefits related to mental health
+</pre>
+
+```bash
+orchestrate agents remove --name MA42021_customer_care_agent_join_tool --kind native
+orchestrate agents remove --name MA42021_customer_care_agent_structuredoutput --kind native
+
+orchestrate tools remove --name MA42021_get_healthcare_benefits
+orchestrate tools remove --name MA42021_get_my_claims
+orchestrate tools remove --name MA42021_search_healthcare_providers
+
+orchestrate agents remove --name MA42021_service_now_agent --kind native
+orchestrate tools remove --name MA42021_create_service_now_incident
+orchestrate tools remove --name MA42021_get_my_service_now_incidents
+orchestrate tools remove --name MA42021_get_service_now_incident_by_number
+
+orchestrate connections remove --app-id MA42021_service-now
+```
+
+## agent_guidelines
+
+```bash
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_wf_italy.py
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_wf_france.py
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_wf_spain.py
+
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_guidelines.yaml
+```
+
+Test
+<pre>
+Give me the weather forecast for current week in Rome.
+Give me the weather forecast for current week in Naples.
+
+Give me the weather forecast for current week in Paris.
+Give me the weather forecast for current week in Marseille.
+
+Give me the weather forecast for current week in Madrid.
+Give me the weather forecast for current week in Barcelona.
+
+Give me the weather forecast for current week in Berlin.
+Give me the weather forecast for current week in Tokio.
+</pre>
+
+```bash
+orchestrate agents remove --name MA42021_agent_guidelines --kind native
+
+orchestrate tools remove --name MA42021_tool_wf_italy
+orchestrate tools remove --name MA42021_tool_wf_france
+orchestrate tools remove --name MA42021_tool_wf_spain
+```
