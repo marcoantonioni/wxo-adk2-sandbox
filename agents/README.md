@@ -258,3 +258,46 @@ orchestrate tools remove --name MA42021_tool_wf_italy
 orchestrate tools remove --name MA42021_tool_wf_france
 orchestrate tools remove --name MA42021_tool_wf_spain
 ```
+
+## agent_knowledge
+
+```bash
+orchestrate knowledge-bases import -f ${_WXO_SANDBOX}/knowledge-bases/kb_urls.yaml
+
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/...
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_.....yaml
+```
+
+Test
+<pre>
+</pre>
+
+```bash
+orchestrate agents remove --name MA42021_agent_... --kind native
+
+orchestrate tools remove --name MA42021_tool_...
+
+orchestrate knowledge-bases import --name MA42021_kb_urls
+```
+
+
+
+
+
+SECTION TEMPLATE
+## agent_
+
+```bash
+orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/...
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_.....yaml
+```
+
+Test
+<pre>
+</pre>
+
+```bash
+orchestrate agents remove --name MA42021_agent_... --kind native
+
+orchestrate tools remove --name MA42021_tool_...
+```

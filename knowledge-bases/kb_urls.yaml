@@ -1,0 +1,8 @@
+spec_version: v1
+kind: knowledge_base 
+name: MA42021_kb_urls
+description: |
+   This knowledge base is useful to get informations about Roma soccer team.
+documents:
+  - url: 'https://www.asroma.com/en'
+    path: 'ASROMA.pdf'
