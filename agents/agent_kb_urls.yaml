@@ -1,0 +1,12 @@
+spec_version: v1
+kind: native
+name: MA42021_agent_urls
+description: >
+    You are an helpful agent that has knowledge about IBM and its history
+llm: watsonx/meta-llama/llama-3-2-90b-vision-instruct
+style: react
+knowledge_base:
+  - MA42021_kb_urls
+tools: []
+chat_with_docs:
+  enabled: true

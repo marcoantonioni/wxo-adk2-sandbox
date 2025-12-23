@@ -1,8 +1,9 @@
 spec_version: v1
-kind: knowledge_base 
+kind: knowledge_base
 name: MA42021_kb_urls
-description: |
-   This knowledge base is useful to get informations about Roma soccer team.
+description: General information about IBM and its history
 documents:
-  - url: 'https://www.asroma.com/en'
-    path: 'ASROMA.pdf'
+ - path: IBM_wikipedia.pdf
+   url: https://en.wikipedia.org/wiki/IBM
+ - path: history_of_ibm.pdf
+   url: https://en.wikipedia.org/wiki/History_of_IBM

@@ -264,20 +264,20 @@ orchestrate tools remove --name MA42021_tool_wf_spain
 ```bash
 orchestrate knowledge-bases import -f ${_WXO_SANDBOX}/knowledge-bases/kb_urls.yaml
 
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/...
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_.....yaml
+orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_kb_urls.yaml
 ```
 
 Test
 <pre>
+who is ibm ceo
+
+tell me about ibm history
 </pre>
 
 ```bash
-orchestrate agents remove --name MA42021_agent_... --kind native
+orchestrate agents remove --name MA42021_agent_urls... --kind native
 
-orchestrate tools remove --name MA42021_tool_...
-
-orchestrate knowledge-bases import --name MA42021_kb_urls
+orchestrate knowledge-bases remove --name MA42021_kb_urls
 ```
 
 

@@ -16,6 +16,14 @@ orchestrate tools list
 
 orchestrate connections list
 
+orchestrate server logs --name dev-edition-wxo-server-1
+orchestrate server logs | grep dev-edition-wxo-server-1
+
+orchestrate server logs | grep dev-edition-wxo-server-worker-1
+
+# container names
+docker inspect --format '{{.Name}}' $(docker ps -q) | sed 's/\///g'
+
 ```
 
 ### FastMCP
