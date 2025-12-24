@@ -10,3 +10,4 @@ knowledge_base:
 tools: []
 chat_with_docs:
   enabled: true
+  
