@@ -5,9 +5,7 @@
 git config user.name "marcoantonioni"
 git config user.email "antonioni.marco@gmail.com"
 
-git add .
-git commit -m "update"
-git push -u origin main
+git add . && git commit -m "update" && git push -u origin main
 ```
 
 ## commands memos
