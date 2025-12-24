@@ -3,7 +3,9 @@ kind: knowledge_base
 name: MA42021_kb_urls
 description: General information about IBM and its history
 documents:
- - path: IBM_wikipedia.pdf
-   url: https://en.wikipedia.org/wiki/IBM
- - path: history_of_ibm.pdf
-   url: https://en.wikipedia.org/wiki/History_of_IBM
+  - path: IBM_wikipedia.pdf
+    url: https://en.wikipedia.org/wiki/IBM
+  - path: history_of_ibm.pdf
+    url: https://en.wikipedia.org/wiki/History_of_IBM
+  - path: one-none-100000.txt
+    url: https://it.wikipedia.org/wiki/Uno,_nessuno_e_centomila

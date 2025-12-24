@@ -263,20 +263,26 @@ orchestrate tools remove --name MA42021_tool_wf_spain
 
 ```bash
 orchestrate knowledge-bases import -f ./knowledge-bases/kb_urls.yaml
-
 orchestrate agents import -f ./agents/agent_kb_urls.yaml
+
+orchestrate knowledge-bases import -f ./knowledge-bases/kb_literature.yaml
+orchestrate agents import -f ./agents/agent_kb_literature.yaml
 ```
 
 Test
 <pre>
 who is ibm ceo
-
 tell me about ibm history
+
+give me details about Pirandello book one, no one, one hundred thousands.
+what are the emotional phases Moscarda gone through ?
 </pre>
 
 ```bash
-orchestrate agents remove --name MA42021_agent_urls... --kind native
+orchestrate agents remove --name MA42021_agent_urls --kind native
+orchestrate knowledge-bases remove --name MA42021_kb_literature
 
+orchestrate agents remove --name MA42021_agent_literature --kind native
 orchestrate knowledge-bases remove --name MA42021_kb_urls
 ```
 
