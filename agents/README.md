@@ -1,14 +1,14 @@
 # Agents
 
 ```bash
-export _WXO_SANDBOX=/home/marco/wxo/wxo-adk2-sandbox
+cd C:\wxolite-sdk\wxo-adk2-sandbox
 ```
 
 ## greeter
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/greetings.py
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/greeter.yaml
+orchestrate tools import -k python -f ./tools/greetings.py
+orchestrate agents import -f ./agents/greeter.yaml
 ```
 
 ```bash
@@ -31,16 +31,16 @@ orchestrate connections list
 ```
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/get_my_claims.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/get_healthcare_benefits.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/search_healthcare_providers.py
+orchestrate tools import -k python -f ./tools/customer_care/get_my_claims.py
+orchestrate tools import -k python -f ./tools/customer_care/get_healthcare_benefits.py
+orchestrate tools import -k python -f ./tools/customer_care/search_healthcare_providers.py
 
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/create_service_now_incident.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_my_service_now_incidents.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_service_now_incident_by_number.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ./tools/servicenow/create_service_now_incident.py -r ./tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ./tools/servicenow/get_my_service_now_incidents.py -r ./tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ./tools/servicenow/get_service_now_incident_by_number.py -r ./tools/servicenow/requirements.txt -a MA42021_service-now
 
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/service_now_agent.yaml
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/customer_care_agent.yaml
+orchestrate agents import -f ./agents/service_now_agent.yaml
+orchestrate agents import -f ./agents/customer_care_agent.yaml
 
 orchestrate tools list
 orchestrate agents list
@@ -69,8 +69,8 @@ orchestrate connections remove --app-id MA42021_service-now
 ## healthcare_agent
 
 ```bash
-orchestrate tools import -k openapi -f ${_WXO_SANDBOX}/tools/openapi/get_healthcare_providers.yaml
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/healthcare_agent.yaml
+orchestrate tools import -k openapi -f ./tools/openapi/get_healthcare_providers.yaml
+orchestrate agents import -f ./agents/healthcare_agent.yaml
 ```
 
 ```bash
@@ -80,8 +80,8 @@ orchestrate tools remove --name MA42021_getHealthCareProviders
 
 ## langflow_agent
 ```bash
-orchestrate tools import -k langflow -f ${_WXO_SANDBOX}/tools/langflow/transcripts_action_item_extractor.json
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/langflow_agent.yaml
+orchestrate tools import -k langflow -f ./tools/langflow/transcripts_action_item_extractor.json
+orchestrate agents import -f ./agents/langflow_agent.yaml
 ```
 
 Test
@@ -105,7 +105,7 @@ orchestrate tools remove --name MA42021_transcripts_action_item_extractor
 ## web_chat_customization
 
 ```bash
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/web_chat_configuration.yaml
+orchestrate agents import -f ./agents/web_chat_configuration.yaml
 ```
 
 ```bash
@@ -115,8 +115,8 @@ orchestrate agents remove --name MA42021_web_chat_configuration --kind native
 ## agent_style_default
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_document.py
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_default.yaml
+orchestrate tools import -k python -f ./tools/tool_document.py
+orchestrate agents import -f ./agents/agent_style_default.yaml
 ```
 
 ```bash
@@ -127,9 +127,9 @@ orchestrate tools remove --name MA42021_tool_document
 ## agent_style_react
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/user_activities.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/user_data.py
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_react.yaml
+orchestrate tools import -k python -f ./tools/user_activities.py
+orchestrate tools import -k python -f ./tools/user_data.py
+orchestrate agents import -f ./agents/agent_style_react.yaml
 ```
 
 Test
@@ -148,10 +148,10 @@ orchestrate tools remove --name MA42021_user_activities
 To Be completed...
 
 ```bash
-#orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_scheduler.py
-#orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_executor.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_planner.py
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_style_planner.yaml
+#orchestrate tools import -k python -f ./tools/tool_scheduler.py
+#orchestrate tools import -k python -f ./tools/tool_executor.py
+orchestrate tools import -k python -f ./tools/tool_planner.py
+orchestrate agents import -f ./agents/agent_style_planner.yaml
 ```
 
 Test
@@ -185,20 +185,20 @@ orchestrate connections list
 ```
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_custom_join.py
+orchestrate tools import -k python -f ./tools/tool_custom_join.py
 
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/get_my_claims.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/get_healthcare_benefits.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/customer_care/search_healthcare_providers.py
+orchestrate tools import -k python -f ./tools/customer_care/get_my_claims.py
+orchestrate tools import -k python -f ./tools/customer_care/get_healthcare_benefits.py
+orchestrate tools import -k python -f ./tools/customer_care/search_healthcare_providers.py
 
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/create_service_now_incident.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_my_service_now_incidents.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/servicenow/get_service_now_incident_by_number.py -r ${_WXO_SANDBOX}/tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ./tools/servicenow/create_service_now_incident.py -r ./tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ./tools/servicenow/get_my_service_now_incidents.py -r ./tools/servicenow/requirements.txt -a MA42021_service-now
+orchestrate tools import -k python -f ./tools/servicenow/get_service_now_incident_by_number.py -r ./tools/servicenow/requirements.txt -a MA42021_service-now
 
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/service_now_agent.yaml
+orchestrate agents import -f ./agents/service_now_agent.yaml
 
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/customer_care_agent_jointool.yaml
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/customer_care_agent_structuredoutput.yaml
+orchestrate agents import -f ./agents/customer_care_agent_jointool.yaml
+orchestrate agents import -f ./agents/customer_care_agent_structuredoutput.yaml
 
 orchestrate tools list
 orchestrate agents list
@@ -229,11 +229,11 @@ orchestrate connections remove --app-id MA42021_service-now
 ## agent_guidelines
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_wf_italy.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_wf_france.py
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/tool_wf_spain.py
+orchestrate tools import -k python -f ./tools/tool_wf_italy.py
+orchestrate tools import -k python -f ./tools/tool_wf_france.py
+orchestrate tools import -k python -f ./tools/tool_wf_spain.py
 
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_guidelines.yaml
+orchestrate agents import -f ./agents/agent_guidelines.yaml
 ```
 
 Test
@@ -262,9 +262,9 @@ orchestrate tools remove --name MA42021_tool_wf_spain
 ## agent_knowledge
 
 ```bash
-orchestrate knowledge-bases import -f ${_WXO_SANDBOX}/knowledge-bases/kb_urls.yaml
+orchestrate knowledge-bases import -f ./knowledge-bases/kb_urls.yaml
 
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_kb_urls.yaml
+orchestrate agents import -f ./agents/agent_kb_urls.yaml
 ```
 
 Test
@@ -288,8 +288,8 @@ SECTION TEMPLATE
 ## agent_
 
 ```bash
-orchestrate tools import -k python -f ${_WXO_SANDBOX}/tools/...
-orchestrate agents import -f ${_WXO_SANDBOX}/agents/agent_.....yaml
+orchestrate tools import -k python -f ./tools/...
+orchestrate agents import -f ./agents/agent_.....yaml
 ```
 
 Test
